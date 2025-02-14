@@ -12,7 +12,11 @@ import { InvestmentService } from '../investment.service';
 export class InvestmentResultsComponent {
   private investmentService = inject(InvestmentService);
 
-  get results() {
-    return this.investmentService.resultData;
-  }
+  // This method is used to get the results from the service.
+  // get results() {
+  //   return this.investmentService.resultData;
+  // }
+
+  // Alternative way to get results, as a readonly property. Also, this way, the results are not recalculated on every change detection cycle.
+  results = this.investmentService.resultData.asReadonly();
 }
